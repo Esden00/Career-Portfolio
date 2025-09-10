@@ -1,0 +1,291 @@
+/* === Reed-Richards Lab UI × Cyberpunk/Cybersecurity === */
+/* Fonts: Orbitron (tech wordmark/headings), Playfair (optional accents) */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+
+/* Tokens */
+:root{
+  --bg:#06070b;
+  --panel:rgba(12,14,20,.82);
+  --edge:#1d2230;
+  --ink:#eaf0f9;
+  --muted:#97a3b6;
+  --title:#e3e0d9;
+
+  --hero:#4aa3ff;   /* chrome blue */
+  --cyan:#00e5ff;   /* neon cyan */
+  --green:#39ff14;  /* tiny accent */
+  --pink:#ff33cc;   /* sparingly */
+
+  --maxw:980px;
+  --radius:14px;
+  --ui:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --tech:"Orbitron", var(--ui);
+  --serif:"Playfair Display","Times New Roman",serif;
+}
+
+/* Reset-lite */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+img{display:block;max-width:100%}
+
+/* Base */
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--ui);
+  line-height:1.7;
+  overflow-x:hidden;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ======= Fantastic Four Retro-Future Tech Background ======= */
+:root{
+  /* F4 palette (poster/lab lounge): */
+  --ff-blue:   #2a7fe6;   /* suit blue */
+  --ff-teal:   #00bcd4;   /* tech cyan/teal */
+  --ff-cream:  #f1ede4;   /* warm off-white */
+  --ff-wood:   #c08a54;   /* lounge wood accent (very subtle) */
+  --ff-deep:   #0a0d12;   /* deep backdrop */
+}
+
+.bg{
+  position: fixed;
+  inset: -10% -10% -10% -10%;
+  z-index: -3;
+  pointer-events: none;
+}
+
+/* (1) SKY + CITY SILHOUETTE — retro poster colors with slow parallax */
+.ff-sky{
+  background:
+    /* high clouds cream → blue */
+    linear-gradient(180deg, var(--ff-cream) 0%, #e6eef8 25%, #9bc2ff 55%, #1b3a57 100%),
+    /* soft vignette */
+    radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,.35), transparent 65%),
+    radial-gradient(1000px 800px at 15% 20%, rgba(42,127,230,.25), transparent 60%),
+    radial-gradient(1000px 800px at 85% 30%, rgba(0,188,212,.18), transparent 60%),
+    /* very subtle skyline silhouette lines */
+    repeating-linear-gradient(
+      to top,
+      rgba(0,0,0,.10) 0 1px, transparent 1px 40px
+    );
+  background-blend-mode: screen, normal, normal, normal, normal;
+  animation: ffSkyDrift 60s linear infinite;
+  filter: saturate(1.02);
+}
+@keyframes ffSkyDrift{
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 0 0, -200px 120px, 160px -80px, -180px 60px, 0 40px; }
+}
+
+/* (2) WINDOW GRID / LAB PANELS — mid-century lounge vibe, animated */
+.ff-grid{
+  z-index:-2;
+  /* vertical/horz mullions */
+  background:
+    linear-gradient(to right, rgba(255,255,255,.08) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(255,255,255,.08) 2px, transparent 2px);
+  background-size: 140px 100%, 100% 120px;     /* grid spacing */
+  background-position: 0 0, 0 0;
+  /* slight arch hint with perspective */
+  transform: perspective(800px) rotateX(45deg) translateY(25vh);
+  transform-origin: top;
+  opacity:.45;
+  animation: ffGridScroll 18s linear infinite;
+  box-shadow: 0 -60px 120px rgba(0,0,0,.45) inset; /* floor fade */
+}
+@keyframes ffGridScroll{
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 140px 20px, 0 120px; }
+}
+
+/* (3) TECH NODES + PATHS — animated cyber overlay in teal/blue */
+.ff-nodes{
+  z-index:-1;
+  background:
+    /* glowing nodes */
+    radial-gradient(6px 6px at 18% 40%, rgba(0,188,212,.75), transparent 60%),
+    radial-gradient(5px 5px at 62% 55%, rgba(42,127,230,.75), transparent 60%),
+    radial-gradient(5px 5px at 78% 28%, rgba(0,188,212,.75), transparent 60%),
+    radial-gradient(6px 6px at 35% 72%, rgba(42,127,230,.75), transparent 60%),
+    /* connecting traces */
+    linear-gradient(90deg, rgba(0,188,212,.20) 0 0) no-repeat,
+    linear-gradient( 0deg, rgba(42,127,230,.20) 0 0) no-repeat,
+    linear-gradient(90deg, rgba(0,188,212,.15) 0 0) no-repeat,
+    linear-gradient( 0deg, rgba(42,127,230,.15) 0 0) no-repeat;
+  background-size:
+    auto, auto, auto, auto,
+    1px 32vh, 34vw 1px, 1px 26vh, 22vw 1px;
+  background-position:
+    18% 40%, 62% 55%, 78% 28%, 35% 72%,
+    18% 40%, 18% 40%, 62% 55%, 62% 55%;
+  opacity:.55;
+  animation: ffPulse 6s ease-in-out infinite;
+  filter: blur(.2px);
+}
+@keyframes ffPulse{
+  0%,100%{ opacity:.35; filter: blur(1px); }
+  50%    { opacity:.75; filter: blur(0); }
+}
+
+/* (4) DIAGONAL SCANNER SWEEP — cinematic, Reed-lab polish */
+.ff-sweep{
+  mix-blend-mode: screen;
+  background:
+    linear-gradient(115deg, transparent 0 38%,
+      rgba(255,255,255,.18) 42%,
+      rgba(42,127,230,.22) 50%,
+      rgba(0,188,212,.16) 56%,
+      transparent 68%);
+  animation: ffSweep 10s ease-in-out infinite;
+  opacity:.9;
+}
+@keyframes ffSweep{
+  0%   { background-position: -60vw -30vh; }
+  50%  { background-position:   5vw   10vh; }
+  100% { background-position:  70vw   45vh; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .bg{ animation: none !important; transform: none !important; }
+}
+
+
+
+
+/* ================= CONTENT PANELS ================= */
+header,main,footer{
+  width:100%;
+  max-width:var(--maxw);
+  margin:1.6rem auto;
+  padding:1.25rem 1.5rem;
+  background:var(--panel);
+  border:1px solid var(--edge);
+  border-radius:var(--radius);
+  backdrop-filter:blur(8px);
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
+}
+
+/* Header layout */
+header{
+  display:grid;
+  gap:1.2rem;
+  align-items:center;
+}
+@media (min-width:860px){
+  header{ grid-template-columns: auto 1fr auto; } /* brand | id | avatar */
+}
+
+/* --- Brand block --- */
+.brand{
+  display:flex; align-items:center; gap:.8rem;
+}
+.mark{
+  width:64px; height:64px; flex:0 0 auto;
+  filter: drop-shadow(0 0 10px rgba(74,163,255,.35));
+}
+.wordmark{
+  line-height:1;
+  display:flex; flex-direction:column;
+  letter-spacing:.12em;
+  font-family: var(--tech);
+  text-transform: uppercase;
+}
+.wm-main{
+  font-weight:700;
+  font-size:1.05rem;
+  background: linear-gradient(90deg,#cfe1ff,#4aa3ff,#e6f0ff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.25),
+    0 0 24px rgba(74,163,255,.25);
+}
+.wm-sub{
+  margin-top:.15rem;
+  font-weight:500;
+  font-size:.72rem;
+  color:#9fbef8;
+  letter-spacing:.28em;
+}
+
+/* --- Identity block --- */
+.id-block .hero-name{
+  margin:0 0 .25rem 0;
+  font-family: var(--tech);
+  font-weight:700;
+  letter-spacing:.06em;
+  font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem);
+  background: linear-gradient(90deg,#dfe7ff,#4aa3ff,#dfe7ff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 0 18px rgba(74,163,255,.25);
+}
+header p{ margin:.2rem 0 0 0; color: var(--muted); font-size:.98rem; }
+header a{ color:#9ec2ff; text-decoration:none; border-bottom:1px solid transparent; }
+header a:hover{ border-color:#9ec2ff; }
+
+/* Avatar with tiny neon-green rim */
+.avatar{
+  width:164px; height:164px; object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(10, 167, 224, 0.493);
+  box-shadow:0 0 24px rgba(74,163,255,.25);
+}
+
+/* Sections */
+section{
+  margin:1.2rem 0;
+  padding:1.05rem 1.2rem;
+  background:#0b0f16;
+  border:1px solid var(--edge);
+  border-radius: var(--radius);
+}
+section h2{
+  margin:0 0 .6rem 0;
+  font: 600 1.15rem/1 var(--tech);
+  letter-spacing:.08em;
+  color: var(--title);
+  position:relative;
+  text-transform: uppercase;
+}
+section h2::after{
+  content:"";
+  position:absolute; right:0; bottom:-1px; left:0;
+  height:2px;
+  background:
+    linear-gradient(90deg, var(--hero), transparent 65%),
+    radial-gradient(6px 6px at 98% 50%, var(--green), transparent 60%);
+  background-repeat:no-repeat;
+}
+
+/* Subheads & lists */
+h3{ margin:.28rem 0 .28rem 0; font-weight:600; color:#cde0ff; font-family:var(--ui); }
+ul{ padding-left:1.1rem; }
+li{ margin:.35rem 0; color: var(--muted); }
+
+/* Badges */
+.badge{
+  display:inline-block;
+  padding:.22rem .6rem; margin:.2rem .3rem 0 0;
+  border:1px solid var(--edge); border-radius:999px;
+  background:#0f141d; color:#e4eaf3; font-size:.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  box-shadow:
+    0 0 0 1px rgba(0,229,255,.14) inset,
+    0 0 0 1px rgba(57,255,20,.16);
+}
+
+/* Footer */
+footer{ text-align:center; color: var(--muted); font-size:.92rem; }
+
+/* Focus ring */
+:focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+/* Mobile */
+@media (max-width: 600px){
+  header, main, footer{ padding:1rem; }
+  .mark{ width:56px; height:56px; }
+  .avatar{ width:132px; height:132px; }
+}
