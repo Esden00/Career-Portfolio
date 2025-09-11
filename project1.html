@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 1 — Operating Systems</title>
+
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fantastic Four Cyber Background -->
+  <div class="bg ff-sky" aria-hidden="true"></div>
+  <div class="bg ff-grid" aria-hidden="true"></div>
+  <div class="bg ff-nodes" aria-hidden="true"></div>
+  <div class="bg ff-sweep" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#bcd7ff"/>
+            <stop offset="50%" stop-color="#4aa3ff"/>
+            <stop offset="100%" stop-color="#dfe7ff"/>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ring)" stroke-width="6"/>
+        <path d="M38 42 H82 M38 60 H72 M38 78 H82"
+              stroke="url(#ring)" stroke-width="8" stroke-linecap="square"/>
+      </svg>
+      <div class="wordmark">
+        <span class="wm-main">ESDEN</span><span class="wm-sub">LABS</span>
+      </div>
+    </div>
+
+    <div class="id-block">
+      <h1 class="hero-name">Operating Systems Project</h1>
+      <p><a href="index.html">← Back to Resume</a></p>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <main>
+    <section>
+      <h2><strong>Operating Systems: CPU Scheduling & Race Condition Demonstration</strong></h2>
+     <section>
+
+  <p>
+    This project focused on simulating key concepts in operating system design: 
+    <strong>CPU scheduling</strong> and <strong>race conditions in multithreaded environments</strong>.
+    <br><br>
+    In the first part, I implemented two classic scheduling algorithms: 
+    <em>First Come, First Serve (FCFS)</em> and <em>Shortest Job First (SJF)</em>. 
+    The program calculated waiting times and turnaround times for a set of processes, 
+    allowing comparison of how each algorithm impacts efficiency and process scheduling.
+    <br><br>
+    The second part demonstrated a <em>race condition</em> by using two threads that 
+    concurrently modified a shared counter variable. One thread incremented the counter, 
+    while the other decremented it. Because the operations occurred without synchronization, 
+    the final value of the counter varied between executions, highlighting the risks of 
+    concurrent programming without proper coordination mechanisms.
+    <br><br>
+    Through this project, I gained hands-on experience with 
+    <strong>CPU scheduling strategies, process management, concurrency, 
+    and the importance of synchronization in multithreaded systems</strong>.
+  </p>
+
+
+  <!-- First screenshot -->
+  <img src="images/Project1.fig1.png" 
+       alt="Project 1 Figure 1 - C code race condition demo" 
+       style="max-width:100%; border-radius:12px; margin:1rem 0;" />
+
+  <!-- Second screenshot -->
+  <img src="images/Project1.fig2.png" 
+       alt="Project 1 Figure 2 - Execution output showing race condition" 
+       style="max-width:100%; border-radius:12px; margin:1rem 0;" />
+</section>
+
+
+   
+
+    <section>
+      <h2>Skills Learned</h2>
+    
+<p>
+Through this project, I gained practical experience in applying operating system concepts to real-world programming. 
+By implementing First Come First Serve (FCFS) and Shortest Job First (SJF) scheduling, I learned how to analyze 
+turnaround and waiting times and connect theoretical scheduling principles to measurable results. The race condition 
+exercise strengthened my understanding of multithreading by requiring me to coordinate threads around a shared 
+variable, demonstrating the importance of synchronization. Working through debugging and testing also developed 
+my problem-solving and critical thinking skills, while documenting the project improved my ability to present 
+technical work clearly and effectively.
+</p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Esden | Project Showcase</p>
+  </footer>
+
+</body>
+</html>

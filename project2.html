@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 2 — Nile Dot Com (Java)</title>
+
+  <!-- Fonts + your global stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-specific layout (small, simple, and semantic) -->
+  <style>
+    /* 2-column layout unique to project 2 */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    @media (min-width: 920px){
+      .layout {
+        grid-template-columns: 300px 1fr; /* sidebar | main */
+      }
+    }
+
+    /* Sidebar card look that harmonizes with your theme */
+    aside.project-meta {
+      position: sticky;
+      top: 1rem;
+    }
+    .meta-block {
+      margin: .9rem 0;
+      padding: .8rem .9rem;
+      background: #0b0f16;
+      border: 1px solid var(--edge);
+      border-radius: var(--radius);
+    }
+    .meta-block h3 {
+      margin: 0 0 .4rem 0;
+      color: #cde0ff;
+      font-weight: 600;
+    }
+    .meta-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    /* Simple gallery grid */
+    .gallery {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 760px){
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      border: 1px solid var(--edge);
+      background: #0b0f16;
+    }
+
+    /* Inline code chips for file names */
+    code.file {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .9rem;
+      background: #0f141d;
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: .08rem .35rem;
+      color: #e4eaf3;
+    }
+
+    /* Back link look */
+    .backlink a { color:#9ec2ff; text-decoration:none; border-bottom:1px solid transparent; }
+    .backlink a:hover { border-color:#9ec2ff; }
+  </style>
+</head>
+<body>
+
+  <!-- Fantastic Four / cyber background -->
+  <div class="bg ff-sky"   aria-hidden="true"></div>
+  <div class="bg ff-grid"  aria-hidden="true"></div>
+  <div class="bg ff-nodes" aria-hidden="true"></div>
+  <div class="bg ff-sweep" aria-hidden="true"></div>
+
+  <!-- Header (compact) -->
+  <header>
+    <div class="brand">
+      <!-- Minimal emblem for consistency -->
+      <svg class="mark" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#bcd7ff"/>
+            <stop offset="50%" stop-color="#4aa3ff"/>
+            <stop offset="100%" stop-color="#dfe7ff"/>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ring)" stroke-width="6"/>
+        <path d="M38 42 H82 M38 60 H72 M38 78 H82"
+              stroke="url(#ring)" stroke-width="8" stroke-linecap="square"/>
+      </svg>
+      <div class="wordmark">
+        <span class="wm-main">ESDEN</span><span class="wm-sub">LABS</span>
+      </div>
+    </div>
+
+    <div class="id-block">
+      <h1 class="hero-name">Project 2 — Nile Dot Com (Java)</h1>
+      <p class="backlink"><a href="index.html">← Back to Resume</a></p>
+    </div>
+  </header>
+
+  <!-- 2-column layout -->
+  <main class="layout" role="main">
+    <!-- Sidebar -->
+    <aside class="project-meta" aria-label="Project metadata and summary">
+      <div class="meta-block">
+        <h3>Overview</h3>
+        <p style="color:var(--muted); margin:.2rem 0 0 0;">
+          Event-driven Java GUI that simulates a small e-store:
+          search items, add to cart, compute totals, and generate invoices with transaction logs.
+        </p>
+      </div>
+
+      <div class="meta-block">
+        <h3>Tech</h3>
+        <ul class="meta-list">
+          <li>Java (OOP, Swing/AWT events)</li>
+          <li>Event-driven programming</li>
+          <li>File I/O (CSV read/write)</li>
+          <li>Input validation & errors</li>
+        </ul>
+      </div>
+
+      <div class="meta-block">
+        <h3>Key Files</h3>
+        <ul class="meta-list">
+          <li><code class="file">NiledotCom.java</code></li>
+          <li><code class="file">inventory.csv</code> (input)</li>
+          <li><code class="file">transactions.csv</code> (output)</li>
+        </ul>
+      </div>
+
+      <div class="meta-block">
+        <h3>Tasks Supported</h3>
+        <ul class="meta-list">
+          <li>Search by item ID / name</li>
+          <li>Add / remove from cart</li>
+          <li>Compute subtotal, tax, discounts</li>
+          <li>Finalize order & log invoice</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div>
+      <section>
+        <h2>Description</h2>
+        <p>
+          This project implemented an event-driven e-store interface in Java, modeled as “Nile Dot Com.”
+          The application connects GUI actions (button clicks, text input) to backend logic that manages
+          a shopping cart and order lifecycle. Users can search inventory, add or remove items, compute totals
+          (including tax and discounts), and check out. Completed purchases are written to an output log with
+          unique transaction identifiers based on timestamp.
+        </p>
+        <p>
+          The program reads product data from <code class="file">inventory.csv</code>, validates user input
+          (e.g., item ID existence and stock levels), and handles common error cases through clear messages.
+          On checkout, the app generates a human-readable invoice and appends a structured record to
+          <code class="file">transactions.csv</code>, supporting basic audit and reconciliation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Skills Learned</h2>
+        <p>
+          I applied <em>event-driven programming</em> by wiring GUI controls to handlers that update application
+          state and the cart view in response to user input. I practiced <em>object-oriented design</em> to keep
+          inventory, cart items, and totals well-structured and testable. Implementing <em>file I/O</em> taught me
+          to parse CSV inputs safely and persist finalized transactions. Finally, I improved <em>error handling</em>
+          by validating item IDs, quantities, and stock, then surfacing informative messages so users can correct
+          issues quickly.
+        </p>
+      </section>
+
+      <section>
+        <h2>How It Works</h2>
+        <ol style="color:var(--muted); padding-left:1.2rem;">
+          <li>Load items from <code class="file">inventory.csv</code> into memory at launch.</li>
+          <li>User searches by ID or name → matching item details appear.</li>
+          <li>User selects quantity → “Add to Cart” updates cart and running totals.</li>
+          <li>“Delete Last Item” backs out the most recent addition if needed.</li>
+          <li>“Checkout” computes subtotal, tax, discounts, and final total, then writes a row to <code class="file">transactions.csv</code>.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Screenshots</h2>
+        <div class="gallery" role="list">
+          <!-- Replace with your actual images -->
+          <img src="images/project2-gui.png" alt="Nile Dot Com GUI showing search, cart, and actions" role="listitem" />
+          <img src="images/project2-invoice.png" alt="Generated invoice / transactions log output screenshot" role="listitem" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Notes</h2>
+        <ul>
+          <li class="badge">Event handlers decouple UI from business logic.</li>
+          <li class="badge">CSV I/O enables simple, portable data exchange.</li>
+          <li class="badge">Validation prevents invalid IDs and over-quantity errors.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Esden | Project Showcase</p>
+  </footer>
+</body>
+</html>
