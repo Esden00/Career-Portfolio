@@ -1,0 +1,231 @@
+/* ==== Fantastic Four inspo ==== */
+/* no crazy effects, just flat gradients and colors */
+
+/* font import */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+
+/* colors */
+:root{
+  /* main colors */
+  --bg:#06070b;
+  --panel:rgba(12,14,20,.82);
+  --edge:#1d2230;
+  --ink:#eaf0f9;
+  --muted:#97a3b6;
+  --title:#e3e0d9;
+
+  /* accents */
+  --hero:#4aa3ff;
+  --cyan:#00e5ff;
+  --green:#13ebbc;
+
+ 
+  --ff-blue:#2a7fe6;
+  --ff-teal:#00bcd4;
+  --ff-cream:#f1ede4;
+
+  /* layout /fonts */
+  --maxw:980px;
+  --radius:14px;
+  --ui:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --tech:"Orbitron", var(--ui);
+}
+
+/* reset */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+img{ display:block; max-width:100%; }
+
+/* base page look */
+body{
+  background:
+    linear-gradient(180deg,
+      var(--ff-cream) 0%,
+      #dfe9f7 22%,
+      #9bc2ff 55%,
+      #182433 100%);
+  color:var(--ink);
+  font-family:var(--ui);
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* bg layers, just static divs */
+.bg{
+  position:fixed;
+  inset:-10% -10% -10% -10%;
+  z-index:-3;
+  pointer-events:none;
+}
+
+/* sky layer */
+.bg.ff-sky{
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,.25), transparent 65%),
+    radial-gradient(900px 600px at 15% 20%, rgba(42,127,230,.18), transparent 60%),
+    radial-gradient(900px 600px at 85% 30%, rgba(0,188,212,.14), transparent 60%);
+  opacity:.9;
+  z-index:-3;
+}
+
+/* grid layer */
+.bg.ff-grid{
+  background:
+    linear-gradient(to right, rgba(255,255,255,.08) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(255,255,255,.08) 2px, transparent 2px);
+  background-size:140px 100%, 100% 120px;
+  transform:perspective(700px) rotateX(40deg) translateY(25vh);
+  transform-origin:top;
+  opacity:.35;
+  z-index:-2;
+  box-shadow:0 -60px 120px rgba(0,0,0,.45) inset;
+}
+
+/* node dots /lines */
+.bg.ff-nodes{
+  background:
+    radial-gradient(6px 6px at 18% 40%, rgba(0,188,212,.7), transparent 60%),
+    radial-gradient(5px 5px at 62% 55%, rgba(42,127,230,.7), transparent 60%),
+    radial-gradient(5px 5px at 78% 28%, rgba(0,188,212,.7), transparent 60%),
+    radial-gradient(6px 6px at 35% 72%, rgba(42,127,230,.7), transparent 60%),
+    linear-gradient(90deg, rgba(0,188,212,.18), rgba(0,188,212,.18)) no-repeat,
+    linear-gradient(0deg, rgba(42,127,230,.18), rgba(42,127,230,.18)) no-repeat;
+  background-size:auto, auto, auto, auto, 1px 28vh, 28vw 1px;
+  background-position:18% 40%, 62% 55%, 78% 28%, 35% 72%, 18% 40%, 62% 55%;
+  opacity:.5;
+  z-index:-1;
+}
+
+/* main panels (header, main, footer) */
+header,main,footer{
+  width:100%;
+  max-width:var(--maxw);
+  margin:1.6rem auto;
+  padding:1.25rem 1.5rem;
+  background:var(--panel);
+  border:1px solid var(--edge);
+  border-radius:var(--radius);
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
+}
+
+/* header grid */
+header{ display:grid; gap:1.2rem; align-items:center; }
+@media (min-width:860px){
+  header{ grid-template-columns:auto 1fr auto; } /* brand | contact | pic */
+}
+
+/* logo text */
+.brand{ display:flex; align-items:center; gap:.8rem; }
+.mark{ width:64px; height:64px; flex:0 0 auto; }
+
+/* wordmark */
+.logo{ line-height:1; display:flex; flex-direction:column; letter-spacing:.12em; font-family:var(--tech); text-transform:uppercase; }
+.wm-main{
+  font-weight:700; font-size:1.05rem;
+  background:linear-gradient(90deg,#cfe1ff,var(--hero),#e6f0ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 1px 0 rgba(255,255,255,.2), 0 0 24px rgba(74,163,255,.2);
+}
+.wm-sub{
+  margin-top:.15rem; font-weight:500; font-size:.72rem;
+  color:#9fbef8; letter-spacing:.28em;
+}
+
+/* contact/name */
+.contact .nombre{
+  margin:0 0 .25rem 0;
+  font-family:var(--tech);
+  font-weight:700;
+  letter-spacing:.06em;
+  font-size:clamp(1.8rem, 2.2vw + 1rem, 2.6rem);
+  background:linear-gradient(90deg,#dfe7ff,var(--hero),#dfe7ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 18px rgba(74,163,255,.22);
+}
+header p{ margin:.2rem 0 0 0; color:var(--muted); font-size:.98rem; }
+header a{ color:#9ec2ff; text-decoration:none; border-bottom:1px solid transparent; }
+header a:hover{ border-color:#9ec2ff; }
+
+/*pro pic */
+.pro-pic{
+  width:164px; height:164px; object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(10,167,224,.45);
+  box-shadow:0 0 24px rgba(74,163,255,.22);
+}
+
+/* sections */
+section{
+  margin:1.2rem 0;
+  padding:1.05rem 1.2rem;
+  background:#0b0f16;
+  border:1px solid var(--edge);
+  border-radius:var(--radius);
+}
+section h2{
+  margin:0 0 .6rem 0;
+  font:600 1.15rem/1 var(--tech);
+  letter-spacing:.08em;
+  color:var(--title);
+  text-transform:uppercase;
+  position:relative;
+}
+section h2::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:2px;
+  background:linear-gradient(90deg, var(--hero), transparent 65%);
+}
+
+/* text/lists */
+h3{ margin:.28rem 0; font-weight:600; color:#cde0ff; font-family:var(--ui); }
+ul{ padding-left:1.1rem; }
+li{ margin:.35rem 0; color:var(--muted); }
+
+/* bubble*/
+.bubble{
+  display:inline-block;
+  padding:.22rem .6rem; margin:.2rem .3rem 0 0;
+  border:1px solid var(--edge);
+  border-radius:999px;
+  background:#0f141d;
+  color:#e4eaf3;
+  font-size:.85rem;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  box-shadow:0 0 0 1px rgba(29,156,170,.5) inset;
+}
+
+/* link colors */
+main a, section a{
+  color:var(--ink);
+  text-decoration:underline;
+  transition: color .15s ease;
+}
+main a:hover, section a:hover{ color:var(--hero); }
+main a:active, section a:active{ color:#2a7fe6; }
+main a:visited, section a:visited{ color:var(--ink); }
+
+footer a{
+  color:var(--ink);
+  text-decoration:underline;
+  transition: color .15s ease;
+}
+footer a:hover{ color:var(--hero); }
+footer a:active{ color:#2a7fe6; }
+footer a:visited{ color:var(--ink); }
+
+/* focus ring */
+:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; }
+
+/* mobile */
+@media (max-width:600px){
+  header,main,footer{ padding:1rem; }
+  .mark{ width:56px; height:56px; }
+  .pro-pic{ width:132px; height:132px; }
+}

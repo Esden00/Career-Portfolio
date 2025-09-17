@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 1 — Operating Systems</title>
+
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- F4 bg!-->
+  <div class="bg bg-sky" aria-hidden="true"></div>
+  <div class="bg bg-grid" aria-hidden="true"></div>
+  <div class="bg bg-nodes" aria-hidden="true"></div>
+  <div class="bg bg-sweep" aria-hidden="true"></div>
+
+  <!-- Header-->
+  <header>
+    <div class="contact">
+      <h1 class="nombre">Operating Systems Project</h1>
+      <p><a href="index.html">← Back to Resume</a></p>
+    </div>
+  </header>
+
+  <!-- project -->
+  <main>
+    <section>
+      <h2><strong>Operating Systems: CPU Scheduling & Race Condition Demonstration</strong></h2>
+
+      <p>
+        This project focused on two central areas of operating systems: CPU scheduling and race conditions in concurrent execution.
+        <br><br>
+        In the first phase, I implemented the First Come, First Serve (FCFS) and Shortest Job First (SJF) scheduling algorithms. The program measured 
+        turnaround and waiting times for a group of processes, allowing direct comparison of efficiency under each method.  
+        This exercise showed how scheduling choices influence system responsiveness, fairness, and the distribution of computing resources.
+        <br><br>
+        The second part involved a simulation of a race condition using two threads that accessed the same shared counter variable. 
+        One thread incremented the counter while the other decremented it. Because the operations were unsynchronized, 
+        the final value of the counter varied unpredictably with each run. This behavior demonstrated the risks of 
+        concurrency when multiple threads attempt to modify shared data without coordination.
+        <br><br>
+        Working through these tasks allowed me to get a practical insight into the design and testing of scheduling algorithms, the measurement of 
+        process performance, and the challenges that come with concurrent programming. It reinforced the importance of synchronization mechanisms 
+        in preventing unpredictable outcomes and highlighted the close connection between theoretical principles and 
+        their real-world applications in system design.
+      </p>
+
+      <!--1 screenshot -->
+      <img src="images/Project1.fig1.png" 
+           alt="Project 1 Figure 1 - C code race condition demo" 
+           style="max-width:100%; border-radius:12px; margin:1rem 0;" />
+
+      <!-- 2nd screenshot -->
+      <img src="images/Project1.fig2.png" 
+           alt="Project 1 Figure 2 - Execution output showing race condition" 
+           style="max-width:100%; border-radius:12px; margin:1rem 0;" />
+    </section>
+
+    <section>
+      <h2>Skills Learned</h2>
+      <p>
+        <ul>
+          <li>Implement FCFS and SJF CPU schedulers.</li>
+          <li>Analyze turnaround and waiting times to compare algorithms.</li>
+          <li>Built a race condition demo with two unsynchronized threads.</li>
+          <li>Learned the importance of synchronization for shared data.</li>
+          <li>Strengthened debugging,testing, and problem-solving skills.</li>
+          <li>Improved technical documentation/clarity of communication.</li>
+        </ul>
+      </p>
+    </section>
+
+    
+    <section>
+      <h2></h2>
+      <ul>
+        <li><a href="index.html">Home — Resume</a></li>
+        <li><a href="project2.html">Project 2: E-Commerce GUI</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; Integrity is the one currency that never devalues</p>
+  </footer>
+</body>
+</html>
+
